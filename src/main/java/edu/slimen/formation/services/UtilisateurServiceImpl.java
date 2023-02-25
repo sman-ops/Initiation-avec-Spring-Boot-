@@ -56,4 +56,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     
 	}
 
+	@Override
+	public List<Utilisateur> findByFirstName(String firstname) {
+		
+		return utilisateurRepository.findByFirstName(firstname);
+	}
+
 }

@@ -55,6 +55,18 @@ public class UtilisateurController {
 		userService.deleteUser(id);
 	}
 	
+	@GetMapping(path="/findByFirstname/{firstname}")
+	public ResponseEntity<List<Utilisateur>>  findUserByFirstName(@PathVariable String firstname) {
+		 List<Utilisateur> user= userService.findByFirstName(firstname);
+		 if(user.isEmpty()) {
+			 return new ResponseEntity<List<Utilisateur>>(HttpStatus.NO_CONTENT);
+			 
+		 }else {
+			 return  new ResponseEntity<List<Utilisateur>>(user, HttpStatus.OK);
+		 }
+		}
+	
+	
 	
 	
 	
