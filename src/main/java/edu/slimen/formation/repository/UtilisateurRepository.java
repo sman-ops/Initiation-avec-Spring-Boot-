@@ -12,5 +12,8 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
 	
 	
 	public List<Utilisateur> findByFirstName(String firstname);
+	public List<Utilisateur> findByFirstNameAndLastName(String firstname, String lastname);
+	
+	public List<Utilisateur> findByAgeIn(List<Integer> ages);
 
 }

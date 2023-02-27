@@ -3,10 +3,13 @@ package edu.slimen.formation.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity 
 public class Utilisateur implements Serializable {
@@ -21,6 +24,11 @@ public class Utilisateur implements Serializable {
 	private Date starterDate;
 	private int age;
 	private Boolean active;
+	
+	
+
+	@OneToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE}  )
+	private Contact contact;
 	
 	
 	public Long getId() {
@@ -71,6 +79,14 @@ public class Utilisateur implements Serializable {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
+	public Contact getContact() {
+		return contact;
+	}
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+	
+	
 	
 	
 	

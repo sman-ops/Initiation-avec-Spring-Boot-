@@ -68,6 +68,30 @@ public class UtilisateurController {
 	
 	
 	
+	@GetMapping(path="/findByFirstnameAndLastname/{firstname}/{lastname}")
+	public ResponseEntity<List<Utilisateur>>  findUserByFirstNameAndLastname(@PathVariable String firstname,@PathVariable String lastname) {
+		 List<Utilisateur> user= userService.findByFirstNameAndLastName(firstname, lastname);
+		 if(user.isEmpty()) {
+			 return new ResponseEntity<List<Utilisateur>>(HttpStatus.NO_CONTENT);
+			 
+		 }else {
+			 return  new ResponseEntity<List<Utilisateur>>(user, HttpStatus.OK);
+		 }
+		}
+	
+	@GetMapping(path="/findByAge")
+	public ResponseEntity<List<Utilisateur>>  findUserByAge(@RequestBody List<Integer> ages) {
+		 List<Utilisateur> user= userService.findByAgeIn(ages);
+		 if(user.isEmpty()) {
+			 return new ResponseEntity<List<Utilisateur>>(HttpStatus.NO_CONTENT);
+			 
+		 }else {
+			 return  new ResponseEntity<List<Utilisateur>>(user, HttpStatus.OK);
+		 }
+		}
+	
+	
+	
 	
 	
 

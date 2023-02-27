@@ -62,4 +62,17 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return utilisateurRepository.findByFirstName(firstname);
 	}
 
+	@Override
+	public List<Utilisateur> findByFirstNameAndLastName(String firstname, String lastname) {
+		
+		return utilisateurRepository.findByFirstNameAndLastName(firstname, lastname);
+	}
+
+	@Override
+	public List<Utilisateur> findByAgeIn(List<Integer> ages) {
+		
+		
+		return utilisateurRepository.findByAgeIn(ages);
+	}
+
 }
