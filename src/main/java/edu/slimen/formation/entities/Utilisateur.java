@@ -2,6 +2,7 @@ package edu.slimen.formation.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity 
@@ -30,6 +32,9 @@ public class Utilisateur implements Serializable {
 	@OneToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE}  )
 	private Contact contact;
 	
+	
+	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER) 
+	private Set<Role> roles;
 	
 	public Long getId() {
 		return id;
